@@ -3,6 +3,7 @@ import React, { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import logo from "../../../assets/logo-hbo-max.jpg";
+import useStore from "../../../config/globalStore";
 import {
 	Formik,
 	FormikHelpers,
@@ -21,7 +22,11 @@ const Login: FC<MyFormValues> = ({}) => {
 	// const useStyles = useButtonStyles();
 	const initialValues: MyFormValues = { email: "", password: "" };
 	const [error, setError] = useState<String>("");
+	const [token, setToken] = useState<String>("")
 	const navigate = useNavigate();
+	const getToken = useStore((state: any) => state.token);
+	const addToken = useStore((state) => state.addToken);
+	console.log('token state initial', getToken)
 	const getTokenAccess = (values: any) => {
 		console.log(values);
 		const { email, password } = values;
@@ -36,11 +41,12 @@ const Login: FC<MyFormValues> = ({}) => {
 					console.log("success");
 					var data = response.data;
 					var token = data.token;
-					console.log(token);
+					//Setting token in the store application
+					addToken({ token: token })
 					//saving the token to the localStorage
-					localStorage.setItem("token", token);
+					//localStorage.setItem("token", token);
 					//redirect to the home screen
-					//navigate("/home");
+					navigate("/home");
 				}
 			})
 			.catch(function (error) {
@@ -51,7 +57,7 @@ const Login: FC<MyFormValues> = ({}) => {
 	};
 
 	return (
-		<section className="h-full bg-gradient-to-r from-purple-300 to-blue-200 md:h-screen">
+		<section className="h-full  md:h-screen">
 			<div className="container py-12 px-6 h-full">
 				<div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
 					<div className="xl:w-10/12">
