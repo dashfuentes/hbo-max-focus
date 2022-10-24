@@ -6,7 +6,11 @@ export const getFeaturedMovies = async () => {
         let response = await axios.get(
 			`https://api.themoviedb.org/3/movie/popular?api_key=${key.api_key}`,
 		);
-		return response.data;
+		
+		var data = response.data.results;
+		var cleanMovieArr = data.filter((line: any) => { return line.title !== undefined })
+		return cleanMovieArr
+	
     } catch (error) {
         console.log(error);
     }
@@ -18,7 +22,10 @@ export const getMoviesByName = async (name: string) => {
 		let response = await axios.get(
 			`https://api.themoviedb.org/3/search/multi?api_key=${key.api_key}&query=${name}`,
 		);
-		return response.data;
+		var data = response.data.results;
+		var cleanMovieArr = data.filter((line: any) => { return line.title !== undefined })
+		console.log('after clean', cleanMovieArr)
+		return cleanMovieArr
 	} catch (error) {
 		console.log(error);
 	}
@@ -29,8 +36,14 @@ export const getMovieDetails = async (id: number) => {
 		let response = await axios.get(
 			`https://api.themoviedb.org/3/movie/${id}?api_key=${key.api_key}`,
 		);
+		
 		return response.data;
 	} catch (error) {
 		console.log(error);
 	}
 };
+
+export const verifySessionToken = (tokenObj: any, tokenStorage:any) => {
+	if (!tokenStorage && tokenObj.token == '') return false;
+	return true
+}
