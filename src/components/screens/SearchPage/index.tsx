@@ -1,5 +1,4 @@
 import React, { FC, useState, useEffect } from "react";
-import { getFeaturedMovies } from "../../../utils";
 import ListItem from "../../atoms/MovieList";
 import Navbar from "../../atoms/Navbar";
 import { useLocation, useNavigate } from 'react-router-dom';

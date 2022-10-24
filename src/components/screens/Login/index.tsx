@@ -1,17 +1,12 @@
 import React, { FC, useState } from "react";
-import {container} from "./styles";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import logo from "../../../assets/logo-hbo-max.jpg";
 import useStore from "../../../config/globalStore";
 import {login} from "../../../utils"
 import {
 	Formik,
-	FormikHelpers,
-	FormikProps,
 	Form,
 	Field,
-	FieldProps,
 } from "formik";
 
 interface MyFormValues {
@@ -22,11 +17,13 @@ interface MyFormValues {
 const Login: FC<MyFormValues> = ({}) => {
 	const initialValues: MyFormValues = { email: "", password: "" };
 	const [error, setError] = useState<String>("");
+	const [token, setToken] = useState<String>("")
 	const navigate = useNavigate();
 	const getToken = useStore((state: any) => state.token);
 	const addToken = useStore((state:any) => state.addToken);
 
 	const getTokenAccess = (values: any) => {
+		console.log(values);
 		const { email, password } = values;
 		login(email,password)
 			.then(function (response: any) {
@@ -53,7 +50,7 @@ const Login: FC<MyFormValues> = ({}) => {
 			<div className="container py-12 px-6 h-full">
 				<div className="flex justify-center items-center flex-wrap h-full g-6 text-white">
 					<div className="xl:w-10/12">
-						<div className="block main-login-container  shadow-lg rounded-lg" style={container}>
+						<div className="block main-login-container  shadow-lg rounded-lg">
 							<div className="lg:flex lg:flex-wrap g-0">
 								<div className="lg:w-6/12 px-4 md:px-0">
 									<div className="md:p-12 md:mx-6">
@@ -66,7 +63,7 @@ const Login: FC<MyFormValues> = ({}) => {
 										<Formik
 											initialValues={initialValues}
 											onSubmit={async (values) => {
-									
+												
 												const isEmptyInput = Object.values(values).every(
 													(value) => {
 														// 👇️ check for empty properties
@@ -76,6 +73,8 @@ const Login: FC<MyFormValues> = ({}) => {
 														return false;
 													}
 												);
+
+												
 												if (isEmptyInput)
 													return setError("You must provide email/password");
 

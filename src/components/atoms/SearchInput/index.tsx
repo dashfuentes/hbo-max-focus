@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { getMoviesByName } from "../../../utils";
+import { useNavigate } from "react-router-dom";
 import Logout from "../../atoms/Logout";
 interface Props {}
 
@@ -14,7 +14,7 @@ const SearchInput: FC<Props> = (props) => {
 	};
 
 	const handleKeyDown = (event: React.ChangeEvent<HTMLInputElement>) => {
-		if (event.key  === 'Enter') {
+		if (event.key === 'Enter') {
 			// 👇️ your logic here
 			console.log('Enter key pressed ✅');
 			return getMovies(searchTerm);

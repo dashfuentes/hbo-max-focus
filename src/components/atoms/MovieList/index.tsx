@@ -8,7 +8,7 @@ interface movie {
 }
 
 const MovieList: FC<movie> = ({ movie }) => {
-	const addMoviesToFavorite = useStore((state) => state.addMovies);
+	const addMoviesToFavorite = useStore((state:any) => state.addMovies);
 
 	/**
 	 * This function adds a new movie object to the local/zustand storage
@@ -51,12 +51,10 @@ const MovieList: FC<movie> = ({ movie }) => {
 					<span className="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">
 						Popular
 					</span>
-					<div className="text-container w-48">
-						<h2 className="text-1xl pb-4 pt-2 font-medium text-white">
-							{movie.title}
-						</h2>
-					</div>
-
+					<div className="text-container w-48"><h2 className="text-1xl pb-4 pt-2 font-medium text-white">
+						{movie.title}
+					</h2></div>
+					
 					<p className="text-sm text-white line-clamp-3">{movie.overview}</p>
 				</div>
 				<div className="p-4 border-t border-b text-xs text-white">
