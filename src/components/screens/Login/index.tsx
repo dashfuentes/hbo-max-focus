@@ -1,9 +1,10 @@
 import React, { FC, useState } from "react";
-//import useButtonStyles from "./styles";
+import {container} from "./styles";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import logo from "../../../assets/logo-hbo-max.jpg";
 import useStore from "../../../config/globalStore";
+import {login} from "../../../utils"
 import {
 	Formik,
 	FormikHelpers,
@@ -19,32 +20,23 @@ interface MyFormValues {
 }
 
 const Login: FC<MyFormValues> = ({}) => {
-	// const useStyles = useButtonStyles();
 	const initialValues: MyFormValues = { email: "", password: "" };
 	const [error, setError] = useState<String>("");
-	const [token, setToken] = useState<String>("")
 	const navigate = useNavigate();
 	const getToken = useStore((state: any) => state.token);
-	const addToken = useStore((state) => state.addToken);
-	console.log('token state initial', getToken)
+	const addToken = useStore((state:any) => state.addToken);
+
 	const getTokenAccess = (values: any) => {
-		console.log(values);
 		const { email, password } = values;
-		axios
-			.post("https://reqres.in/api/login", {
-				email: email,
-				password: password,
-			})
-			.then(function (response) {
-				console.log(response);
+		login(email,password)
+			.then(function (response: any) {
 				if (response.status == 200) {
-					console.log("success");
 					var data = response.data;
 					var token = data.token;
 					//Setting token in the store application
 					addToken({ token: token })
 					//saving the token to the localStorage
-					//localStorage.setItem("token", token);
+					localStorage.setItem("token", token);
 					//redirect to the home screen
 					navigate("/home");
 				}
@@ -57,11 +49,11 @@ const Login: FC<MyFormValues> = ({}) => {
 	};
 
 	return (
-		<section className="h-full  md:h-screen">
+		<section className="h-full  md:h-screen container mx-auto">
 			<div className="container py-12 px-6 h-full">
-				<div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
+				<div className="flex justify-center items-center flex-wrap h-full g-6 text-white">
 					<div className="xl:w-10/12">
-						<div className="block bg-white shadow-lg rounded-lg">
+						<div className="block main-login-container  shadow-lg rounded-lg" style={container}>
 							<div className="lg:flex lg:flex-wrap g-0">
 								<div className="lg:w-6/12 px-4 md:px-0">
 									<div className="md:p-12 md:mx-6">
@@ -74,7 +66,7 @@ const Login: FC<MyFormValues> = ({}) => {
 										<Formik
 											initialValues={initialValues}
 											onSubmit={async (values) => {
-												console.log(values);
+									
 												const isEmptyInput = Object.values(values).every(
 													(value) => {
 														// 👇️ check for empty properties
@@ -84,8 +76,6 @@ const Login: FC<MyFormValues> = ({}) => {
 														return false;
 													}
 												);
-
-												console.log("searching nulls", isEmptyInput);
 												if (isEmptyInput)
 													return setError("You must provide email/password");
 
@@ -93,7 +83,7 @@ const Login: FC<MyFormValues> = ({}) => {
 											}}
 										>
 											<Form>
-												<p className="mb-4">Please login to your account</p>
+												<p className="mb-4 font-semibold">Please login to your account</p>
 												<div className="mb-4">
 													<Field
 														type="text"
@@ -129,7 +119,7 @@ const Login: FC<MyFormValues> = ({}) => {
 										</Formik>
 									</div>
 								</div>
-								<div className="lg:w-6/12 flex bg-gradient-to-r from-purple-300 to-blue-200 items-center lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none">
+								<div className="lg:w-6/12 flex  items-center lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none">
 									<div className="text-white px-4 py-6 md:p-12 md:mx-6">
 										<h4 className="text-xl font-semibold mb-6">
 											We are more than just a company

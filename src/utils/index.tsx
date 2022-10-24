@@ -47,3 +47,15 @@ export const verifySessionToken = (tokenObj: any, tokenStorage:any) => {
 	if (!tokenStorage && tokenObj.token == '') return false;
 	return true
 }
+
+export const login = async (email: any, password:any) => {
+	try {
+			let response = await axios.post("https://reqres.in/api/login", {
+				email: email,
+				password: password,
+			})
+			return response
+	} catch (error) {
+		console.log(error)
+	}
+}
