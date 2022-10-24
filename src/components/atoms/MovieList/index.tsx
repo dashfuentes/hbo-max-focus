@@ -1,5 +1,4 @@
 import React, { FC, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { body } from "../../../config/globalStyles";
 import useStore from "../../../config/globalStore";
 import { Link } from "react-router-dom";
