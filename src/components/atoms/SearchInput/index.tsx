@@ -6,14 +6,13 @@ interface Props {}
 
 const SearchInput: FC<Props> = (props) => {
 	const [searchTerm, setSearchTerm] = useState<string>("");
-	//const [searchResults, setSearchResults] = useState<any[]>([]);
 	const navigate = useNavigate();
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchTerm(event.target.value);
 	};
 
-	const handleKeyDown = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleKeyDown = (event: any) => {
 		if (event.key === 'Enter') {
 			// 👇️ your logic here
 			console.log('Enter key pressed ✅');
