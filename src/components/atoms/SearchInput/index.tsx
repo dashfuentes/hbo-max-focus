@@ -35,7 +35,7 @@ const SearchInput: FC<Props> = (props) => {
 		<>
 			<div className="flex md:flex-1 py-2">
 				<div className="flex gap-2">
-					<div className="items-center pl-3 pointer-events-none">
+					<div className="items-center pl-3 pointer-events-none absolute mt-2">
 						<svg
 							className="w-5 h-5 text-gray-500"
 							aria-hidden="true"

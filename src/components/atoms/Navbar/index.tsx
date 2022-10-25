@@ -9,8 +9,8 @@ const Navbar = () => {
 		<>
 			<nav className="" style={body}>
 				<div className="flex flex-wrap justify-between items-center mx-auto container">
-					<a href="#" className="flex items-center">
-						<img src={logo} className="mr-3 h-8 sm:h-10" alt="logo" />
+					<a href="/home" className="flex items-center">
+						<img src={logo} className="mr-3 h-8 sm:h-14" alt="logo" />
 					</a>
 					<button
 						data-collapse-toggle="mobile-menu"
@@ -35,18 +35,10 @@ const Navbar = () => {
 						</svg>
 					</button>
 					<div className="hidden w-full md:block md:w-auto" id="mobile-menu">
-						<ul className="flex flex-col p-4 mt-4  rounded-lg border  md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+						<ul className="flex flex-col p-4 mt-4  rounded-lg border  md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">						
 							<li>
 								<Link
-									className="nav-link block py-2 pr-4 pl-3 0 rounded md:bg-transparent  md:p-0  text-xl pb-4 pt-2 font-medium text-white"
-									to="/home"
-								>
-									Home
-								</Link>
-							</li>
-							<li>
-								<Link
-									className="nav-link block py-2 pr-4 pl-3 0 rounded md:bg-transparent     pt-2 text-xl text-white"
+									className="nav-link block py-2 pr-4 pl-3 0 rounded md:bg-transparent pt-4 text-xl text-white"
 									to="/favorite-movie"
 								>
 									Favorites
