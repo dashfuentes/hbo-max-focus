@@ -34,14 +34,14 @@ const MovieDetail: FC<Props> = (props) => {
 	return (
 		<>
 			<Navbar />
-			<div className="container mx-auto">
+			<div className="w-9/12 m-auto py-16 min-h-screen flex items-center justify-center">
 				<img
-					className="px-20 pt-1 w-full"
+					className="px-20 pt-1 w-9/12"
 					src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${movieDetails.poster_path}`}
 					alt="Sunset in the mountains"
 				/>
 				<div className="px-6 py-4">
-					<div className="font-bold text-xl mb-2 text-white">
+					<div className="font-bold text-4xl mb-2 text-white">
 						{movieDetails.title}
 					</div>
 					<p className="text-white text-base">{movieDetails.overview}</p>
