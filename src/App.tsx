@@ -27,11 +27,11 @@ function App() {
 		<QueryClientProvider client={queryClient}>
 			<Router>
 				<Routes>
-					<Route exact path="/" element={<Login />} />
-					<Route exact path="/home" element={<Home />} />
-					<Route exact path="/search-movies" element={<SearchPage />} />
-					<Route exact path="/movie-details" element={<MovieDetail />} />
-					<Route exact path="/favorite-movie" element={<Favorite />} />
+					<Route  path="/" element={<Login />} />
+					<Route  path="/home" element={<Home />} />
+					<Route  path="/search-movies" element={<SearchPage />} />
+					<Route  path="/movie-details" element={<MovieDetail />} />
+					<Route  path="/favorite-movie" element={<Favorite />} />
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</Router>
