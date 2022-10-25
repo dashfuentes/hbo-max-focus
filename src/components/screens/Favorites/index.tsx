@@ -4,6 +4,7 @@ import Navbar from "../../atoms/Navbar";
 import { verifySessionToken } from "../../../utils";
 import { useNavigate } from "react-router-dom";
 import useStore from "../../../config/globalStore";
+import Empty from "../Empty"
 
 interface Props {}
 
@@ -12,11 +13,15 @@ const Favorite: FC<Props> = (props) => {
 	const getToken = useStore((state: any) => state.token);
 	const getTokenSession = localStorage.getItem("token");
 	const favoriteMovies = useStore((state: any) => state.favoriteMovies);
+	console.log('get favorites ',favoriteMovies)
 	useEffect(() => {
 		const checkSession = verifySessionToken(getToken, getTokenSession);
 		if(!checkSession) return navigate('/')
 		
 	}, [getTokenSession]);
+
+	if(!favoriteMovies.length) return <Empty />
+
 	return (
 		<>
 			<Navbar />
