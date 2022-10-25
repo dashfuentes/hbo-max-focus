@@ -15,7 +15,7 @@ function App() {
     defaultOptions: {
       queries: {
         refetchOnWindowFocus: false,
-        refetchOnmount: false,
+        refetchOnMount: false,
         refetchOnReconnect: false,
         retry: 1,
         staleTime: 5 * 1000,
