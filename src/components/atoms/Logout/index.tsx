@@ -4,7 +4,7 @@ interface Props {}
 
 const Logout: FC<Props> = (props) => {
     const getToken = useStore((state: any) => state.token);
-    const removeTokenFromStore = useStore((state) => state.removeToken);
+    const removeTokenFromStore = useStore((state: any) => state.removeToken);
 
     const deleteToken = () => {
         console.log('removing')
