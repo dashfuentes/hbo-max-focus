@@ -53,7 +53,7 @@ const MovieList: FC<movie> = ({ movie }) => {
 						<span className="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">
 							Popular
 						</span>
-						<div className="text-container w-48">
+						<div className="text-container w-48 h-20">
 							<h2 className="text-1xl pb-4 pt-2 font-medium line-clamp-2 text-white">
 								{movie.title}
 							</h2>
