@@ -60,7 +60,7 @@ To view detailed information about a movie, click on the box and you will be red
 
 You can see the site following the next URL
 ```
-https://hbo-max-focus-p9lbxwjjd-dashfuentes.vercel.app/
+hbo-max-focus-j83x2xmuu-dashfuentes.vercel.app/
 ```
 
 ## Built with 🛠️
