@@ -34,19 +34,19 @@ const MovieDetail: FC<Props> = (props) => {
 	return (
 		<>
 			<Navbar />
-			<div className="w-9/12 m-auto py-16 min-h-screen flex items-center justify-center">
+			<div className="w-full sm:w-1/2 md:w-2/5 xl:w-2/5 p-4 container mx-auto">
 				<img
-					className="px-20 pt-1 w-9/12"
+					className="px-20 pt-1 xl:w-9/12 sm:w-1/2"
 					src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${movieDetails.poster_path}`}
 					alt="Sunset in the mountains"
 				/>
-				<div className="px-6 py-4">
+				<div className="px-6 pl-12 py-4 m-7 md:w-2/5 xl:w-4/6">
 					<div className="font-bold text-4xl mb-2 text-white">
 						{movieDetails.title}
 					</div>
 					<p className="text-white text-base">{movieDetails.overview}</p>
 				</div>
-				<div className="px-6 pt-4 pb-2">
+				<div className="px-6 pl-12 py-4 m-7 md:w-2/5 xl:w-4/6">
 					{movieProdCompanies.map((company) => (
 						<span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
 							{company.name}
