@@ -15,7 +15,6 @@ const MovieDetail: FC<Props> = (props) => {
 	const [movieProdCompanies, setmovieProdCompanies] = useState<any[]>([]);
 	const location = useLocation();
 	const getMovieIdFromHomePage = location.state.id && location.state.id !== undefined? location.state.id : "";
-	console.log("reading movie id", getMovieIdFromHomePage);
 
 	useEffect(() => {
 		const checkSession = verifySessionToken(getToken, getTokenSession);
@@ -24,7 +23,7 @@ const MovieDetail: FC<Props> = (props) => {
 			.then((data) => {
 				const movieDetailObj = data;
 				const productionDetails = movieDetailObj.production_companies;
-				console.log("movies details", movieDetailObj);
+		
 				setMovieDetails(movieDetailObj);
 				setmovieProdCompanies(productionDetails);
 			})

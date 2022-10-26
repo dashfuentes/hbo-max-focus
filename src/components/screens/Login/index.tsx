@@ -23,7 +23,7 @@ const Login: FC<MyFormValues> = ({}) => {
 	const addToken = useStore((state:any) => state.addToken);
 
 	const getTokenAccess = (values: any) => {
-		console.log(values);
+	
 		const { email, password } = values;
 		login(email,password)
 			.then(function (response: any) {

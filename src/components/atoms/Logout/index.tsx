@@ -3,16 +3,12 @@ import useStore from "../../../config/globalStore";
 interface Props {}
 
 const Logout: FC<Props> = (props) => {
-    const getToken = useStore((state: any) => state.token);
     const removeTokenFromStore = useStore((state: any) => state.removeToken);
 
     const deleteToken = () => {
-        console.log('removing')
+       
         
         localStorage.removeItem('token');
-        //remove the favorites from LS
-
-
         return removeTokenFromStore()
     }
 	

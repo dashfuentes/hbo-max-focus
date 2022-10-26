@@ -24,7 +24,7 @@ export const getMoviesByName = async (name: string) => {
 		);
 		var data = response.data.results;
 		var cleanMovieArr = data.filter((line: any) => { return line.title !== undefined })
-		console.log('after clean', cleanMovieArr)
+		
 		return cleanMovieArr
 	} catch (error) {
 		console.log(error);

@@ -14,8 +14,7 @@ const SearchInput: FC<Props> = (props) => {
 
 	const handleKeyDown = (event: any) => {
 		if (event.key === 'Enter') {
-			// 👇️ your logic here
-			console.log('Enter key pressed ✅');
+			
 			return getMovies(searchTerm);
 		  }
 	}
@@ -23,7 +22,7 @@ const SearchInput: FC<Props> = (props) => {
 	const getMovies = (searchTerm: any) => {
 		getMoviesByName(searchTerm)
 			.then((data) => {
-				console.log("movies by name", data);
+				
 
 				navigate("/search-movies", { state: { data: data } });
 			})
