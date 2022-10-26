@@ -1,5 +1,12 @@
 import create from "zustand";
 
+/**
+ * Create a global store in the application in order to be aware of importants mutable events
+ * token -> add/remove token info
+ * favoritesMovies -> add/remove favorites movie
+ *
+
+ */
 const useStore = create((set) => ({
 	token: { token: "" },
 

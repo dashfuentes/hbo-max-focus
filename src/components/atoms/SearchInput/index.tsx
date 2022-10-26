@@ -12,6 +12,11 @@ const SearchInput: FC<Props> = (props) => {
 		setSearchTerm(event.target.value);
 	};
 
+	/**
+	 * Listening enter key event
+	 *
+	 * @fn
+	 */
 	const handleKeyDown = (event: any) => {
 		if (event.key === 'Enter') {
 			
@@ -19,11 +24,14 @@ const SearchInput: FC<Props> = (props) => {
 		  }
 	}
 
+	/**
+	 * Get movies from the API and set them to the react dom state
+	 *
+	 * @fn
+	 */
 	const getMovies = (searchTerm: any) => {
 		getMoviesByName(searchTerm)
 			.then((data) => {
-				
-
 				navigate("/search-movies", { state: { data: data } });
 			})
 			.catch((e) => console.log(e));

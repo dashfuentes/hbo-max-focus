@@ -16,6 +16,11 @@ const MovieDetail: FC<Props> = (props) => {
 	const location = useLocation();
 	const getMovieIdFromHomePage = location.state.id && location.state.id !== undefined? location.state.id : "";
 
+	/**
+	 * Verify current session to be aware of the token status in the application and  get/save  the movie details by id 
+	 *
+	 * @fn
+	 */
 	useEffect(() => {
 		const checkSession = verifySessionToken(getToken, getTokenSession);
 		if(!checkSession) return navigate('/')

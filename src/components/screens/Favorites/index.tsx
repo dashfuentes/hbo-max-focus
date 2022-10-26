@@ -13,7 +13,12 @@ const Favorite: FC<Props> = (props) => {
 	const getToken = useStore((state: any) => state.token);
 	const getTokenSession = localStorage.getItem("token");
 	const favoriteMovies = useStore((state: any) => state.favoriteMovies);
-	
+
+	/**
+	 * Verify current session to be aware of the token status in the application
+	 *
+	 * @fn
+	 */
 	useEffect(() => {
 		const checkSession = verifySessionToken(getToken, getTokenSession);
 		if(!checkSession) return navigate('/')

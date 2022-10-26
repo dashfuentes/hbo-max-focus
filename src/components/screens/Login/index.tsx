@@ -2,12 +2,8 @@ import React, { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo-hbo-max.jpg";
 import useStore from "../../../config/globalStore";
-import {login} from "../../../utils"
-import {
-	Formik,
-	Form,
-	Field,
-} from "formik";
+import { login } from "../../../utils";
+import { Formik, Form, Field } from "formik";
 
 interface MyFormValues {
 	email?: string;
@@ -17,21 +13,24 @@ interface MyFormValues {
 const Login: FC<MyFormValues> = ({}) => {
 	const initialValues: MyFormValues = { email: "", password: "" };
 	const [error, setError] = useState<String>("");
-	const [token, setToken] = useState<String>("")
 	const navigate = useNavigate();
-	const getToken = useStore((state: any) => state.token);
-	const addToken = useStore((state:any) => state.addToken);
+	const addToken = useStore((state: any) => state.addToken);
 
+	/**
+	 * Get the token session from the API and set the token to the application store
+	 *
+	 * @fn
+	 * @param <any>
+	 */
 	const getTokenAccess = (values: any) => {
-	
 		const { email, password } = values;
-		login(email,password)
+		login(email, password)
 			.then(function (response: any) {
 				if (response.status == 200) {
 					var data = response.data;
 					var token = data.token;
 					//Setting token in the store application
-					addToken({ token: token })
+					addToken({ token: token });
 					//saving the token to the localStorage
 					localStorage.setItem("token", token);
 					//redirect to the home screen
@@ -63,7 +62,6 @@ const Login: FC<MyFormValues> = ({}) => {
 										<Formik
 											initialValues={initialValues}
 											onSubmit={async (values) => {
-												
 												const isEmptyInput = Object.values(values).every(
 													(value) => {
 														// 👇️ check for empty properties
@@ -74,7 +72,6 @@ const Login: FC<MyFormValues> = ({}) => {
 													}
 												);
 
-												
 												if (isEmptyInput)
 													return setError("You must provide email/password");
 
@@ -82,7 +79,9 @@ const Login: FC<MyFormValues> = ({}) => {
 											}}
 										>
 											<Form>
-												<p className="mb-4 font-semibold">Please login to your account</p>
+												<p className="mb-4 font-semibold">
+													Please login to your account
+												</p>
 												<div className="mb-4">
 													<Field
 														type="text"

@@ -17,11 +17,21 @@ const Home: FC<Props> = (props) => {
 	const getTokenSession = localStorage.getItem("token");
 	const favoriteMovies = useStore((state: any) => state.favoriteMovies);
 
+	/**
+	 * Verify current session to be aware of the token status in the application
+	 *
+	 * @fn
+	 */
 	useEffect(() => {
 		const checkSession = verifySessionToken(getToken, getTokenSession);
 		if (!checkSession) return navigate("/");
 	}, [getTokenSession]);
 
+	/**
+	 * Listening the favorite movie store object status and show the animation view
+	 *
+	 * @fn
+	 */
 	useEffect(() => {
 		setShowAnimation(true);
 		setTimeout(() => {
@@ -29,6 +39,7 @@ const Home: FC<Props> = (props) => {
 		}, 1000);
 	}, [favoriteMovies]);
 
+	//Cache the query search in order to avoid redundancy request
 	const { isLoading, isError, data, error } = useQuery(
 		["movies"],
 		getFeaturedMovies
