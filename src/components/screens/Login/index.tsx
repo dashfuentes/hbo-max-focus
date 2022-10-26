@@ -4,6 +4,7 @@ import logo from "../../../assets/logo-hbo-max.jpg";
 import useStore from "../../../config/globalStore";
 import { login } from "../../../utils";
 import { Formik, Form, Field } from "formik";
+import {height} from '../../../config/globalStyles'
 
 interface MyFormValues {
 	email?: string;
@@ -46,7 +47,7 @@ const Login: FC<MyFormValues> = ({}) => {
 
 	return (
 		<section className="h-full  md:h-screen container mx-auto">
-			<div className="container py-12 px-6 h-full">
+			<div className="container py-12 px-6 h-full" style={height}>
 				<div className="flex justify-center items-center flex-wrap h-full g-6 text-white">
 					<div className="xl:w-10/12">
 						<div className="block main-login-container  shadow-lg rounded-lg">
