@@ -1,8 +1,9 @@
 import CSS from 'csstype';
 
 export const lottie: CSS.Properties = {
-    width: "84%",
-    height: "82%",
-    display: "flex",
-    position: 'absolute'
+    width: '100vw',
+    height: '100vh',
+    position: 'fixed',
+    margin: 'auto',
+    marginTop: '-86px',
 };
