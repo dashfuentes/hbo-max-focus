@@ -9,9 +9,9 @@ const Navbar = () => {
 		<>
 			<nav className="" style={body}>
 				<div className="flex flex-wrap justify-between items-center mx-auto container">
-					<a href="/home" className="flex items-center">
+					<Link className="flex items-center" to="/home">
 						<img src={logo} className="mr-3 h-8 sm:h-14" alt="logo" />
-					</a>
+					</Link>
 					<button
 						data-collapse-toggle="mobile-menu"
 						type="button"

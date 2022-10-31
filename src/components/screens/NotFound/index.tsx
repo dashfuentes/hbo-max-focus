@@ -1,5 +1,5 @@
 import React  from "react";
-
+import { Link } from "react-router-dom";
 
 const NotFound = () => {
 	return (
@@ -14,7 +14,9 @@ const NotFound = () => {
 							been moved or deleted.
 						</p>
 						<button className="bg-gradient-to-r from-purple-400 to-blue-500 hover:from-pink-500 hover:to-orange-500 text-white font-semibold px-6 py-3 rounded-md mr-6">
-						<a href="/">Home</a>	
+							<Link to= '/home'>
+								
+							</Link>
 						</button>
 					</div>
 				</div>
