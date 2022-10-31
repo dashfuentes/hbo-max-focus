@@ -58,8 +58,10 @@ To view detailed information about a movie, click on the box and you will be red
 ![details](https://user-images.githubusercontent.com/23019921/198049207-debdef19-9642-4588-9d01-5963fb8a3114.PNG)
 
 
-
-
+You can see the site following the next URL
+```
+hbo-max-focus-j83x2xmuu-dashfuentes.vercel.app/
+```
 
 ## Built with 🛠️
 
